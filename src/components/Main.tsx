@@ -1,30 +1,62 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 
 export function ColorMain() {
+    const [hueValue, setHueValue] = useState(Math.floor(Math.random() * 360))
+    const [saturationValue, setSaturationValue] = useState(100)
+    const [lightValue, setLightValue] = useState(Math.floor(Math.random() * 50) + 35)
+
+    function handleSlider( event: ChangeEvent<HTMLInputElement> ) {
+       if( event.target.classList.contains("hue") ) {
+            setHueValue(event.target.valueAsNumber)
+        }
+       else if( event.target.classList.contains("saturation") ) {
+            setSaturationValue(event.target.valueAsNumber)
+        }
+        else if( event.target.classList.contains("light") ) {
+            setLightValue(event.target.valueAsNumber)
+        }
+    }
+
+    const newBackgroundColor = { "--change-color": `hsl(${hueValue},${saturationValue}%, ${lightValue}%` } as React.CSSProperties;
+
     return (
-        <main>
-            <aside id="color-box">
-            </aside>
+        <div style={newBackgroundColor}>
+            <header>
+                <h1>HSL Color Picker</h1>
+                <h2>
+                    Made with 🫶🏽 in Florida by Kristy Prieto
+                </h2>
+            </header>
 
-            <section>
-                <article>
-                    <label htmlFor="hue">H</label>
-                    <input type="range" id="hue" min="0" max="360" />
-                    <input type="text" className="textbox" name="0" value={69}/>
-                </article>
+            <main>
+                <aside id="color-box">
+                </aside>
 
-                <article>
-                    <label htmlFor="saturation">S</label>
-                    <input type="range" id="saturation" min="0" max="100" value={100}/>
-                    <input type="text" className="textbox" name="0" value={100}/>
-                </article>
+                <section>
+                    <article>
+                        <label htmlFor="hue">H</label>
+                        <input type="range" className="hue" min="0" max="360" value={hueValue} onChange={handleSlider}/>
+                        <input type="text" className="textbox" value={hueValue}/>
+                    </article>
 
-                <article>
-                    <label htmlFor="light">L</label>
-                    <input type="range" id="light" min="0" max="100" value={50}/>
-                    <input type="text" className="textbox" name="0" value={50}/>
-                </article>
-            </section>
-        </main>
+                    <article>
+                        <label htmlFor="saturation">S</label>
+                        <input type="range" className="saturation" min="0" max="100" value={saturationValue} onChange={handleSlider}/>
+                        <input type="text" className="textbox" value={saturationValue}/>
+                    </article>
+
+                    <article>
+                        <label htmlFor="light">L</label>
+                        <input type="range" className="light" min="0" max="100" value={lightValue} onChange={handleSlider}/>
+                        <input type="text" className="textbox" value={lightValue}/>
+                    </article>
+                </section>
+
+                <footer>
+                    <input type="text" id='hexcode'/>
+                    <button>Randomize Color</button>
+                </footer>
+            </main>
+        </div>
     );
 }

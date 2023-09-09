@@ -2,6 +2,7 @@
   font: 16px / 1 sans-serif;
   background-color: #000000;
   color: #eaeaea;
+  --change-color: aquamarine;
 }
 
 html {
@@ -20,7 +21,7 @@ article {
 }
 
 aside {
-  background-color: aquamarine;
+  background-color: var(--change-color);
   height: 100%;
   width: 45%;
   justify-self: end;
@@ -40,16 +41,17 @@ button {
 }
 
 button:hover {
-  background-color: aquamarine;
+  background-color: var(--change-color);;
   box-shadow: .2rem .2rem .2rem #003f5c;
   color: white;
 }
 
 h1 {
   font-size: 3.5rem;
-  margin-bottom: 0;
+  margin: 0;
   text-shadow: -1px 2px 5px #003f5c,
-                1px 4px aquamarine;
+                1px 4px var(--change-color);
+  grid-column: span 3;
 }
 
 h2 {
@@ -74,6 +76,7 @@ main {
 footer {
   display: flex;
   justify-content: center;
+  grid-column: span 3;
   padding: 3rem;
   gap: 2rem;
 }
@@ -97,9 +100,9 @@ section {
   width: 6%;
 }
 
-#hue,
-#saturation,
-#light {
+.hue,
+.saturation,
+.light {
   background-color: #003f5c;
   border-radius: 10px;
   -webkit-appearance: none;
@@ -111,32 +114,32 @@ section {
   transition: opacity .2s;
 }
 
-#hue:hover,
-#saturation:hover,
-#light:hover {
+.hue:hover,
+.saturation:hover,
+.light:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-#hue::-webkit-slider-thumb,
-#saturation::-webkit-slider-thumb,
-#light::-webkit-slider-thumb {
+.hue::-webkit-slider-thumb,
+.saturation::-webkit-slider-thumb,
+.light::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%; 
-  background: aquamarine;
+  background-color: var(--change-color);
   cursor: pointer;
 }
 
-#hue::-moz-range-thumb,
-#saturation::-moz-range-thumb,
-#light::-moz-range-thumb {
+.hue::-moz-range-thumb,
+.saturation::-moz-range-thumb,
+.light::-moz-range-thumb {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: aquamarine;
+  background-color: var(--change-color);
   cursor: pointer;
 }
 
@@ -166,9 +169,9 @@ section {
     width: 25%;
   }
 
-  #hue,
-  #saturation,
-  #light {
+  .hue,
+  .saturation,
+  .light {
     background-color: #003f5c;
     border-radius: 10px;
     -webkit-appearance: none;
@@ -177,25 +180,25 @@ section {
     outline: none;
   }
 
-  #hue::-webkit-slider-thumb,
-  #saturation::-webkit-slider-thumb,
-  #light::-webkit-slider-thumb {
+  .hue::-webkit-slider-thumb,
+  .saturation::-webkit-slider-thumb,
+  .light::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 50%; 
-    background: aquamarine;
+    background-color: var(--change-color);
     cursor: pointer;
   }
 
-  #hue::-moz-range-thumb,
-  #saturation::-moz-range-thumb,
-  #light::-moz-range-thumb {
+  .hue::-moz-range-thumb,
+  .saturation::-moz-range-thumb,
+  .light::-moz-range-thumb {
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 50%;
-    background: aquamarine;
+    background-color: var(--change-color);
     cursor: pointer;
   }
 }
