@@ -64,7 +64,7 @@ export function ColorMain() {
                     <article>
                         <label htmlFor="hue">H</label>
                         <input type="range" className="hue" min="0" max="360" value={hueValue} onChange={handleSlider}/>
-                        <input type="text" className="textbox" value={hueValue} readOnly/>
+                        <input type="text" className="textbox hue" value={hueValue} maxLength={3}/>
                     </article>
 
                     <article>
